@@ -4,11 +4,20 @@ import { AuthProvider, useAuth } from '../contexts/AuthContext';
 import LoginForm from '../components/Auth/LoginForm';
 import TabNavigation from '../components/Navigation/TabNavigation';
 import HomePage from '../components/Home/HomePage';
+import EnvironmentSetup from '../components/Setup/EnvironmentSetup';
 import { Skeleton } from '@/components/ui/skeleton';
 
 const AppContent: React.FC = () => {
   const { user, loading } = useAuth();
   const [activeTab, setActiveTab] = useState('home');
+
+  // Check if Firebase is properly configured
+  const isFirebaseConfigured = import.meta.env.VITE_FIREBASE_API_KEY && 
+                               import.meta.env.VITE_FIREBASE_PROJECT_ID;
+
+  if (!isFirebaseConfigured) {
+    return <EnvironmentSetup />;
+  }
 
   if (loading) {
     return (
