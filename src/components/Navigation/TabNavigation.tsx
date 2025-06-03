@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Home, GameController, Dice, Search, LogOut } from 'lucide-react';
+import { Home, Gamepad2, Dice1, Search, LogOut } from 'lucide-react';
 import { signOut } from 'firebase/auth';
 import { auth } from '../../config/firebase';
 import { toast } from '@/hooks/use-toast';
@@ -38,11 +38,11 @@ const TabNavigation: React.FC<TabNavigationProps> = ({ activeTab, onTabChange })
               Home
             </TabsTrigger>
             <TabsTrigger value="game" className="flex flex-col items-center gap-1 text-xs">
-              <GameController className="h-4 w-4" />
+              <Gamepad2 className="h-4 w-4" />
               Peli
             </TabsTrigger>
             <TabsTrigger value="guess" className="flex flex-col items-center gap-1 text-xs">
-              <Dice className="h-4 w-4" />
+              <Dice1 className="h-4 w-4" />
               Arvaa
             </TabsTrigger>
             <TabsTrigger value="search" className="flex flex-col items-center gap-1 text-xs">
