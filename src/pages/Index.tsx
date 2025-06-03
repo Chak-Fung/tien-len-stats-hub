@@ -1,9 +1,11 @@
-
 import React, { useState } from 'react';
 import { AuthProvider, useAuth } from '../contexts/AuthContext';
 import LoginForm from '../components/Auth/LoginForm';
 import TabNavigation from '../components/Navigation/TabNavigation';
 import HomePage from '../components/Home/HomePage';
+import GameView from '../components/Game/GameView';
+import GuessView from '../components/Guess/GuessView';
+import SearchView from '../components/Search/SearchView';
 import EnvironmentSetup from '../components/Setup/EnvironmentSetup';
 import { Skeleton } from '@/components/ui/skeleton';
 
@@ -39,26 +41,11 @@ const AppContent: React.FC = () => {
       case 'home':
         return <HomePage />;
       case 'game':
-        return (
-          <div className="container mx-auto px-4 py-8">
-            <h2 className="text-2xl font-bold mb-4">Peli-näkymä</h2>
-            <p>Peli-komponentti tulossa pian...</p>
-          </div>
-        );
+        return <GameView />;
       case 'guess':
-        return (
-          <div className="container mx-auto px-4 py-8">
-            <h2 className="text-2xl font-bold mb-4">Korttien arvaus</h2>
-            <p>Arvaus-komponentti tulossa pian...</p>
-          </div>
-        );
+        return <GuessView />;
       case 'search':
-        return (
-          <div className="container mx-auto px-4 py-8">
-            <h2 className="text-2xl font-bold mb-4">Haku</h2>
-            <p>Haku-komponentti tulossa pian...</p>
-          </div>
-        );
+        return <SearchView />;
       default:
         return <HomePage />;
     }
