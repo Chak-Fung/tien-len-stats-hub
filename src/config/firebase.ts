@@ -16,7 +16,11 @@ const requiredEnvVars = {
 // Check for missing environment variables
 const missingVars = Object.entries(requiredEnvVars)
   .filter(([key, value]) => !value)
-  .map(([key]) => `VITE_FIREBASE_${key.toUpperCase().replace(/([A-Z])/g, '_$1')}`);
+  .map(([key]) => {
+    // Convert camelCase to UPPER_SNAKE_CASE properly
+    const envVarName = key.replace(/([A-Z])/g, '_$1').toUpperCase();
+    return `VITE_FIREBASE_${envVarName}`;
+  });
 
 if (missingVars.length > 0) {
   console.error('Missing Firebase environment variables:', missingVars);
